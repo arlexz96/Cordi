@@ -6,7 +6,6 @@ use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Models\EventCapacity;
 use App\Models\Location;
-use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
