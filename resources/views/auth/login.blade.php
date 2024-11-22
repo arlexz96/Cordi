@@ -43,6 +43,19 @@
                 <x-button class="ms-4">
                     {{ __('Log in') }}
                 </x-button>
+
+                
+
+                <x-button class="ms-4">
+                    
+                                        <a
+                                            href="{{ route('register') }}"
+                                            class="rounded-md px-3 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Register
+                                        </a>
+                    
+                </x-button>
             </div>
         </form>
     </x-authentication-card>

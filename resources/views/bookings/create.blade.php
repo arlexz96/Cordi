@@ -1,3 +1,4 @@
+<!-- resources/views/bookings/create.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,17 +7,18 @@
     <title>Crear Reserva</title>
 </head>
 <body>
-    <h1>Crear Nueva Reserva</h1>
-    
+    <h1>Crear una nueva reserva</h1>
+
     <form action="{{ route('bookings.store') }}" method="POST">
         @csrf
+        
+        <!-- Campo oculto para el id_event -->
+        <input type="hidden" name="id_event" value="{{ $event_id }}">
+
         <label for="id_user">Usuario:</label>
-        <input type="number" name="id_user" id="id_user" required>
-        <br>
-        <label for="id_event">Evento:</label>
-        <input type="number" name="id_event" id="id_event" required>
-        <br>
-        <button type="submit">Guardar Reserva</button>
+        <input type="text" name="id_user" id="id_user" required>
+
+        <button type="submit">Confirmar Reserva</button>
     </form>
 </body>
 </html>

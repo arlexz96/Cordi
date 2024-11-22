@@ -15,9 +15,10 @@ class BookingController extends Controller
     }
 
     // Mostrar el formulario de creación de reserva
-    public function create()
+    public function create(Request $request)
     {
-        return view('bookings.create');
+        $event_id = $request->get('event_id');  // Obtener el ID del evento desde la petición
+        return view('bookings.create', compact('event_id'));  // Pasar el ID del evento a la vista de creación
     }
 
     // Almacenar una nueva reserva
