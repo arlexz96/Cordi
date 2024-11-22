@@ -10,10 +10,10 @@
 
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-6"></h1>
 
-{{--         <div class="flex justify-end mb-4">
+        <div class="flex justify-end mb-4">
             <a href="{{ route('events.create') }}"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Nueva Categoría</a>
-        </div> --}}
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Create Event</a>
+        </div>
 
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <table class="min-w-full table-auto">
@@ -55,8 +55,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">No hay
-                                categorías disponibles.</td>
+                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">There are no events to show.</td>
                         </tr>
                     @endforelse
                 </tbody>
