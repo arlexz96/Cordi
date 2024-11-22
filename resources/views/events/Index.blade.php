@@ -12,54 +12,40 @@
 
         <div class="flex justify-end mb-4">
             <a href="{{ route('events.create') }}"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Create Event</a>
+            class="middle none center rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            data-ripple-light="true">Create Event</a>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
-            <table class="min-w-full table-auto">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name Event
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Description</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Options
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    @forelse($events as $event)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->id }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $event->description }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <!-- Enlace a la vista de detalles -->
-                                <a href="{{ route('events.show', $event->id) }}"
-                                    class="text-blue-600 hover:text-blue-800">Details</a>
+        <div class="flex flex-wrap">
+            @forelse ( $events as $event)
+            <article class="w-[360px] m-3 overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+                <img
+                  alt="{{ $event->name }}"
+                  src="{{ $event->image }}"
+                  class="h-56 w-full object-cover"
+                />
 
-                                <!-- Enlace para editar -->
-                                <a href="{{ route('events.edit', $event->id) }}"
-                                    class="text-indigo-600 hover:text-indigo-800 ml-4">Edit</a>
+                <div class="bg-white p-4 sm:p-6">
+                  <time datetime="{{ $event->image }}" class="block text-xs text-gray-500"> {{ $event->date_event }} </time>
 
-                                <!-- Formulario para eliminar -->
-                                <form action="{{ route('events.destroy', $event->id) }}" method="POST"
-                                    class="inline-block ml-4">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-800">Delete</button>
-                                </form>
-                            </td>
+                  <div>
+                    <h2>Event #{{ $event->id }}</h2>
+                    <h3 class="mt-0.5 text-lg text-gray-900">{{ $event->name }}</h3>
+                  </div>
 
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">There are no events to show.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                  <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                    {{ $event->description }}
+                  </p>
+
+                  <div class="m-3">
+                    <button class="middle none center rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true">Book Now!</button>
+                  </div>
+                </div>
+              </article>
+            @empty
+
+            @endforelse
         </div>
     </div>
 @endsection
